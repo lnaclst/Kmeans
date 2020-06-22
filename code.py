@@ -31,6 +31,7 @@ X = np.array([[1,2],[1.5,1],[5,8],[8,8],[1,0.6],[9,11]])
 def kmeans(data, start_means=None,iter=0):
     """Data is an array of points in some space."""
     if start_means==None:
+        #k should = the length of each of the items in data
         m1, m2 = rnd.choices(data, k=2)
     else:
         m1,m2 = start_means
@@ -40,7 +41,8 @@ def kmeans(data, start_means=None,iter=0):
     cluster1 = []
     cluster2 = []
 
-    for i in X:
+    for i in data:
+        #This is the trickier bit for generalization. Need k# of ds.
         d1 = euclid(m1,i)
         d2 = euclid(m2,i)
         if d1 < d2:
