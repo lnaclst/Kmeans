@@ -14,6 +14,17 @@ def euclid(p1, p2):
     b = (p1[1]-p2[1])**2
     return math.sqrt(a+b)
 
+#Find mean of each cluster
+    def cluster_mean(c1):
+        #c1 is a list of points of variable length
+        x = 0
+        y = 0
+        l = len(c1)
+        for i in c1:
+            x += i[0]/l
+            y += i[1]/l
+        return (x,y)
+
 #Sample data
 X = np.array([[1,2],[1.5,1],[5,8],[8,8],[1,0.6],[9,11]])
 
@@ -38,17 +49,6 @@ def kmeans(data, start_means=None,iter=0):
         else:
             if d2 != 0:
                 cluster2.append(i)
-
-    #Find mean of each cluster
-    def cluster_mean(c1):
-        #c1 is a list of points of variable length
-        x = 0
-        y = 0
-        l = len(c1)
-        for i in c1:
-            x += i[0]/l
-            y += i[1]/l
-        return (x,y)
 
     mean1 = cluster_mean(cluster1)
     mean2 = cluster_mean(cluster2)
